@@ -1,4 +1,4 @@
-export const getLastDigit = (id: string) => {
+export const getLastDigit = (id: string): string => {
   const digits = id.split("");
   let sum = 0;
   for (let index = 0; index < digits.length; index++) {
@@ -6,5 +6,5 @@ export const getLastDigit = (id: string) => {
     sum += Math.floor(product / 10) + (product % 10);
   }
 
-  return 10 - (sum % 10);
+  return (10 - (sum % 10)).toString();
 };
