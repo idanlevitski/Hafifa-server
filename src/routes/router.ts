@@ -8,6 +8,6 @@ const router = express.Router();
 
 router.get("/calc/:id", getLastDigitHandler);
 
-router.get("/save", saveUserHandler);
+router.post("/save", saveUserHandler);
 
 export default router;

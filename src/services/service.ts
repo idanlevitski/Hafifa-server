@@ -1,4 +1,5 @@
 import { User } from "../entities/user";
+import { dataSource } from "../DB/data-source";
 
 export const getLastDigit = (id: string): string => {
   const digits = id.split("").map((digit) => {
@@ -18,15 +19,14 @@ const getCurrentValue = (current: number, index: number) => {
   return Math.floor(product / 10) + (product % 10);
 };
 
-//const userRepository = dataSource.getRepository(User);
+const userRepository = dataSource.getRepository(User);
 
 export const saveUser = async (
   id: string,
   lastDigit: string
 ): Promise<void> => {
-  // await userRepository.save({
-  //   id,
-  //   lastDigit,
-  // });
-  console.log(`${id} ${lastDigit}`);
+  await userRepository.save({
+    id,
+    lastDigit,
+  });
 };
