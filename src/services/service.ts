@@ -1,10 +1,17 @@
 export const getLastDigit = (id: string): string => {
-  const digits = id.split("");
-  let sum = 0;
-  for (let index = 0; index < digits.length; index++) {
-    const product = parseInt(digits[index]) * (index % 2 == 0 ? 1 : 2);
-    sum += Math.floor(product / 10) + (product % 10);
-  }
+  const digits = id.split("").map((digit) => {
+    return parseInt(digit);
+  });
 
-  return (10 - (sum % 10)).toString();
+  const res = digits.reduce(
+    (sum, current, index) => sum + getCurrentValue(current, index)
+  );
+
+  return (10 - (res % 10)).toString();
+};
+
+const getCurrentValue = (current: number, index: number) => {
+  const product = index % 2 == 0 ? current : current * 2;
+
+  return Math.floor(product / 10) + (product % 10);
 };
