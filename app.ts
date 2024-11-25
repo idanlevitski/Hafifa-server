@@ -3,14 +3,14 @@ import cors from "cors";
 import router from "./src/routes/router";
 import { dataSource } from "./src/DB/data-source";
 import { error } from "console";
+import { port } from "./src/utils/consts";
+import "dotenv/config";
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use("", router);
-
-const port = 3000;
+app.use("/", router);
 
 dataSource
   .initialize()

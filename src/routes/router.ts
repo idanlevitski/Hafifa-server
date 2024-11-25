@@ -1,13 +1,13 @@
 import express from "express";
 import {
   getLastDigitHandler,
-  saveUserHandler,
+  saveIdNumberHandler,
 } from "../controllers/controller";
 
 const router = express.Router();
 
 router.get("/calc/:id", getLastDigitHandler);
 
-router.post("/save", saveUserHandler);
+router.post("/save", saveIdNumberHandler);
 
 export default router;

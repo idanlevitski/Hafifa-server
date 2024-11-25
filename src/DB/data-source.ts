@@ -1,25 +1,17 @@
 import { DataSource } from "typeorm";
 import { SnakeNamingStrategy } from "typeorm-naming-strategies";
-import { User } from "../entities/user";
+import { idNumber } from "../entities/idNumber";
+import { DB_PORT } from "../utils/consts";
 
 export const dataSource = new DataSource({
   type: "postgres",
   host: "localhost",
-  port: 5433,
+  port: DB_PORT,
   username: "postgres",
   password: "postgres",
   database: "postgres",
-  entities: [User],
+  entities: [idNumber],
   namingStrategy: new SnakeNamingStrategy(),
-  migrations: ["src/DB/migrations/1732523584241-dbCreation.ts"],
+  migrations: ["src/DB/migrations/*.ts"],
   synchronize: false,
 });
-
-dataSource
-  .initialize()
-  .then(() => {
-    console.log("Data Source has been initialized!");
-  })
-  .catch((e) => {
-    console.error("Error during Data Source initialization", e);
-  });
