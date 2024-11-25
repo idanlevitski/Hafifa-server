@@ -4,7 +4,8 @@
   "main": "app.ts",
   "type": "commonjs",
   "scripts": {
-    "start": "ts-node app.ts"
+    "start": "npm run migration && ts-node app.ts",
+    "migration": "ts-node ./node_modules/typeorm/cli.js migration:run -d C:\\Users\\Shahar\\Desktop\\Hafifa-server\\src\\DB\\data-source.ts"
   },
   "license": "ISC",
   "dependencies": {

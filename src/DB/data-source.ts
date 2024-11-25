@@ -5,12 +5,14 @@ import { User } from "../entities/user";
 export const dataSource = new DataSource({
   type: "postgres",
   host: "localhost",
-  port: 5432,
+  port: 5433,
   username: "postgres",
   password: "postgres",
   database: "postgres",
   entities: [User],
   namingStrategy: new SnakeNamingStrategy(),
+  migrations: ["src/DB/migrations/1732523584241-dbCreation.ts"],
+  synchronize: false,
 });
 
 dataSource
